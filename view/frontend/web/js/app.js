@@ -44,16 +44,10 @@ define([
             /* End new options added in v2.4 */
 
             onAccept: function (cookie) {
-                console.log('onAccept fired ...');
-                disableBtn('btn2');
-                disableBtn('btn3');
-
-                // Delete line below
                 document.getElementById('cookie_val') && (document.getElementById('cookie_val').innerHTML = JSON.stringify(cookie, null, 2));
             },
 
             onChange: function (cookie, changed_preferences) {
-                console.log('onChange fired ...');
 
                 // If analytics category's status was changed ...
                 if (changed_preferences.indexOf('analytics') > -1) {
@@ -62,7 +56,6 @@ define([
                     if (!in_cc.allowedCategory('analytics')) {
 
                         // Disable gtag ...
-                        console.log('disabling gtag');
                         window.dataLayer = window.dataLayer || [];
 
                         function gtag() {
